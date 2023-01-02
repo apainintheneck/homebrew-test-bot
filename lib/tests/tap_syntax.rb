@@ -6,9 +6,7 @@ module Homebrew
       def run!(args:)
         test_header(:TapSyntax)
 
-        broken_xcode_rubygems = MacOS.version == :mojave &&
-                                MacOS.active_developer_dir == "/Applications/Xcode.app/Contents/Developer"
-        test "brew", "style", tap.name unless broken_xcode_rubygems
+        test "brew", "style", tap.name
 
         return if tap.formula_files.blank? && tap.cask_files.blank?
 
